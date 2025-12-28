@@ -203,7 +203,11 @@ pub unsafe extern "C" fn _read(
             && !buffer.is_null();
 
         let actual_buffer = if is_byte_ptr_ptr {
-            unsafe { *(buffer as *mut *mut u8) }
+            let inner = unsafe { *(buffer as *mut *mut u8) };
+            if inner.is_null() {
+                return -1;
+            }
+            inner
         } else {
             buffer
         };
