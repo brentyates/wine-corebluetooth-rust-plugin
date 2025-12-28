@@ -1,0 +1,32 @@
+[package]
+name = "plugin"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+name = "plugin"
+
+[dependencies]
+widestring = "1.0"
+parking_lot = "0.12"
+log = "0.4"
+send_wrapper = "0.6"
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.58", features = [
+    "implement",
+    "Devices_Bluetooth",
+    "Devices_Bluetooth_Advertisement",
+    "Devices_Bluetooth_GenericAttributeProfile",
+    "Foundation",
+    "Foundation_Collections",
+    "Storage_Streams",
+    "Security_Cryptography",
+    "Win32_Foundation"
+]}
+
+[profile.release]
+opt-level = "z"
+lto = true
+strip = true

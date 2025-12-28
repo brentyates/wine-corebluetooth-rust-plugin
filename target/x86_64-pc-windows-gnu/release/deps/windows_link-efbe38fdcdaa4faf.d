@@ -1,0 +1,8 @@
+/Users/byates/projects/wine-corebluetooth/rust-plugin/target/x86_64-pc-windows-gnu/release/deps/windows_link-efbe38fdcdaa4faf.d: /Users/byates/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/windows-link-0.2.1/src/lib.rs /Users/byates/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/windows-link-0.2.1/src/../readme.md
+
+/Users/byates/projects/wine-corebluetooth/rust-plugin/target/x86_64-pc-windows-gnu/release/deps/libwindows_link-efbe38fdcdaa4faf.rlib: /Users/byates/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/windows-link-0.2.1/src/lib.rs /Users/byates/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/windows-link-0.2.1/src/../readme.md
+
+/Users/byates/projects/wine-corebluetooth/rust-plugin/target/x86_64-pc-windows-gnu/release/deps/libwindows_link-efbe38fdcdaa4faf.rmeta: /Users/byates/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/windows-link-0.2.1/src/lib.rs /Users/byates/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/windows-link-0.2.1/src/../readme.md
+
+/Users/byates/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/windows-link-0.2.1/src/lib.rs:
+/Users/byates/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/windows-link-0.2.1/src/../readme.md:
