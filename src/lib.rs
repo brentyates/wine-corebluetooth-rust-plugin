@@ -88,10 +88,15 @@ pub unsafe extern "C" fn _connect(addr: *const WideChar, addr_len: i32) -> i32 {
 
     #[cfg(windows)]
     {
-        match device::connect_by_name(&name) {
-            Ok(_) => 0,
-            Err(_) => -1,
-        }
+        std::thread::spawn(move || {
+            match device::connect_by_name(&name) {
+                Ok(_) => {},
+                Err(_) => {
+                    device::disconnect();
+                }
+            }
+        });
+        0
     }
     #[cfg(not(windows))]
     {
@@ -246,20 +251,20 @@ pub unsafe extern "C" fn _write(
         String::from_utf16_lossy(slice)
     };
 
-    let data_slice = unsafe {
-        std::slice::from_raw_parts(data, data_len as usize)
+    let data_vec = unsafe {
+        std::slice::from_raw_parts(data, data_len as usize).to_vec()
     };
 
     #[cfg(windows)]
     {
-        match gatt::write_characteristic(&uuid_str, data_slice) {
-            Ok(_) => 0,
-            Err(_) => -1,
-        }
+        std::thread::spawn(move || {
+            let _ = gatt::write_characteristic(&uuid_str, &data_vec);
+        });
+        0
     }
     #[cfg(not(windows))]
     {
-        let _ = (uuid_str, data_slice);
+        let _ = (uuid_str, data_vec);
         -1
     }
 }
@@ -288,10 +293,10 @@ pub unsafe extern "C" fn _enableNotification(uuid: *const WideChar, uuid_len: i3
 
     #[cfg(windows)]
     {
-        match gatt::enable_notification(&uuid_str) {
-            Ok(_) => 0,
-            Err(_) => -1,
-        }
+        std::thread::spawn(move || {
+            let _ = gatt::enable_notification(&uuid_str);
+        });
+        0
     }
     #[cfg(not(windows))]
     {
@@ -313,10 +318,10 @@ pub unsafe extern "C" fn _disableNotification(uuid: *const WideChar, uuid_len: i
 
     #[cfg(windows)]
     {
-        match gatt::disable_notification(&uuid_str) {
-            Ok(_) => 0,
-            Err(_) => -1,
-        }
+        std::thread::spawn(move || {
+            let _ = gatt::disable_notification(&uuid_str);
+        });
+        0
     }
     #[cfg(not(windows))]
     {
