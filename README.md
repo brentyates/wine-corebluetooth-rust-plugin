@@ -26,10 +26,10 @@ You need a Rust toolchain with the Windows GNU target installed.
 rustup target add x86_64-pc-windows-gnu
 
 # Build release DLL
-./build.sh
+cargo build --release
 ```
 
-The output file will be located at `plugin.dll`.
+The output file will be located at `target/x86_64-pc-windows-gnu/release/plugin.dll`.
 
 ## Installation
 
